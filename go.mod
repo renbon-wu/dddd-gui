@@ -7,7 +7,7 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/hirochachacha/go-smb2 v1.1.0
 	github.com/jlaffaye/ftp v0.2.0
-	github.com/lib/pq v1.10.9
+	github.com/lib/pq v1.12.3
 	github.com/projectdiscovery/dnsx v1.1.6
 	github.com/projectdiscovery/gologger v1.1.12
 	github.com/satori/go.uuid v1.2.0
