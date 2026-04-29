@@ -1,0 +1,12 @@
+# VulScanX API Configuration
+# API keys for asset discovery services
+
+Hunter:
+  key: ""
+
+Fofa:
+  email: ""
+  key: ""
+
+Quake:
+  key: ""

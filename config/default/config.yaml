@@ -1,0 +1,19 @@
+# VulScanX Configuration
+
+# Nuclei template directory
+NucleiTemplate: "config/pocs"
+
+# Fingerprint directory
+FingerprintDir: "config/fingerprints"
+
+# Subdomain wordlist
+SubdomainWordListFile: "config/dicts/subdomain.txt"
+
+# HTTP timeout (seconds)
+HTTPTimeout: 10
+
+# Concurrent requests
+MaxConcurrent: 50
+
+# Scan timeout (seconds)
+ScanTimeout: 300

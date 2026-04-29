@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"embed"
+	"os"
+	"path/filepath"
 
 	"dddd/internal/api"
 
@@ -14,11 +16,26 @@ import (
 //go:embed frontend/dist
 var assets embed.FS
 
+//go:embed config/default/*
+var defaultConfig embed.FS
+
+func init() {
+	configDir := "config"
+	if _, err := os.Stat(configDir); os.IsNotExist(err) {
+		os.MkdirAll(configDir, 0755)
+		files, _ := defaultConfig.ReadDir("config/default")
+		for _, file := range files {
+			data, _ := defaultConfig.ReadFile("config/default/" + file.Name())
+			os.WriteFile(filepath.Join(configDir, file.Name()), data, 0644)
+		}
+	}
+}
+
 func main() {
 	app := NewApp()
 
 	err := wails.Run(&options.App{
-		Title:  "dddd-gui",
+		Title:  "VulScanX",
 		Width:  1024,
 		Height: 768,
 		AssetServer: &assetserver.Options{

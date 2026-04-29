@@ -13,7 +13,7 @@
 请通过以下方式私下报告：
 
 1. 发送邮件至项目维护者
-2. 使用 GitHub 的 [安全漏洞报告功能](https://github.com/renbon-wu/dddd-gui/security/advisories/new)
+2. 使用 GitHub 的 [安全漏洞报告功能](https://github.com/renbon-wu/VulScanX/security/advisories/new)
 
 ### 报告内容
 

@@ -5,7 +5,7 @@
         <!-- 左侧导航菜单 -->
         <el-aside width="200px" class="sidebar">
           <div class="logo">
-            <h2>dddd GUI</h2>
+            <h2>VulScanX</h2>
           </div>
           <el-menu
             :default-active="activeMenu"

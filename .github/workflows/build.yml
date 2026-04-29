@@ -52,13 +52,13 @@ jobs:
 
       - name: Build
         run: |
-          go build -ldflags="-s -w" -o dddd-gui${{ matrix.ext }} .
+          go build -ldflags="-s -w" -o VulScanX${{ matrix.ext }} .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dddd-gui-${{ matrix.goos }}-amd64
-          path: dddd-gui${{ matrix.ext }}
+          name: VulScanX-${{ matrix.goos }}-amd64
+          path: VulScanX${{ matrix.ext }}
 
   release:
     name: Create Release
@@ -82,9 +82,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            artifacts/dddd-gui-linux-amd64/dddd-gui
-            artifacts/dddd-gui-windows-amd64/dddd-gui.exe
-            artifacts/dddd-gui-darwin-amd64/dddd-gui
+            artifacts/VulScanX-linux-amd64/VulScanX
+            artifacts/VulScanX-windows-amd64/VulScanX.exe
+            artifacts/VulScanX-darwin-amd64/VulScanX
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,6 +1,6 @@
 # 贡献指南
 
-感谢您有兴趣为 dddd-gui 做出贡献！
+感谢您有兴趣为 VulScanX 做出贡献！
 
 ## 如何贡献
 
@@ -66,8 +66,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/renbon-wu/dddd-gui.git
-cd dddd-gui
+git clone https://github.com/renbon-wu/VulScanX.git
+cd VulScanX
 
 # 安装 Go 依赖
 go mod download
