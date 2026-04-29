@@ -3,6 +3,9 @@ dddd-gui
 dddd-gui.exe
 dddd
 dddd.exe
+VulScanX
+VulScanX.exe
+VulScanX-*
 *.exe
 *.exe~
 *.dll
