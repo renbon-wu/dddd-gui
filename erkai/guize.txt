@@ -1,0 +1,32 @@
+header="123" //返回头中包含123
+header!="123" //返回头中不包含123
+header~="xxx" //返回头满足xxx正则
+body="123" //body中包含123
+body!="123" //body中不包含123
+body~="xxx" //body满足xxx正则
+body=="123" //body为123
+server="Sundray" //返回头server字段中包含Sundray
+server!="Sundray" //返回头server字段中不包含Sundray
+server=="Sundray" //server字段为Sundray
+title="123" //标题包含123
+title!="123" //标题不包含123
+title=="123" //标题为123
+title~="xxx" //标题满足xxx正则
+cert="123" //证书中包含123
+cert!="123" //证书中不包含123
+cert~="xxx" //证书满足正则
+port="80" //服务端口为80
+port!="80" //服务端口不为80
+port>="80" //服务端口大于等于80
+port<="80" //服务端口小于等于80
+protocol="mysql" //协议为mysql
+protocol!="mysql" //协议不为mysql
+path="123/123.html" //爬虫结果中包含 123/123.html
+body_hash="619335048" //响应体mmh3 hash为619335048
+icon_hash="619335048"  //icon mmh3 hash
+status="200" //页面返回码为200
+status!="200" //页面返回码不为200
+content_type="text/html" //content_type包含text/html
+content_type!="text/html" //content_type不包含text/html
+banner="123" // TCP banner 包含123
+banner!="123" // TCP banner中不含123

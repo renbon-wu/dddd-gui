@@ -1,0 +1,57 @@
+# Binaries
+dddd-gui
+dddd-gui.exe
+dddd
+dddd.exe
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Build
+/build/
+/dist/
+
+# Config files (sensitive)
+config/api-config.yaml
+
+# Results and logs
+result.txt
+*.html
+*.log
+audit.log
+mubiao.txt
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Test files
+*.test
+*.out
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Go
+go.work
+go.work.sum
+
+# Wails
+wails_build/
