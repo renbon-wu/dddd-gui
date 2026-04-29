@@ -1,132 +1,142 @@
-# 工具简介
+# dddd-gui
 
-![](https://socialify.git.ci/SleepingBag945/dddd/image?description=1&font=Inter&forks=1&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Light)
+[![License](https://img.shields.io/github/license/renbon-wu/dddd-gui)](https://github.com/renbon-wu/dddd-gui/blob/main/LICENSE)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/renbon-wu/dddd-gui)](https://github.com/renbon-wu/dddd-gui)
+[![Release](https://img.shields.io/github/release/renbon-wu/dddd-gui)](https://github.com/renbon-wu/dddd-gui/releases)
+[![Stars](https://img.shields.io/github/stars/renbon-wu/dddd-gui)](https://github.com/renbon-wu/dddd-gui)
 
-
+基于 [dddd](https://github.com/SleepingBag945/dddd) 二次开发的漏洞扫描工具，带 GUI 界面。
 
 ## 特点
 
-* 自动识别输入类型，无需手动分类
+- 🖥️ **图形化界面** - 基于 Wails + Vue 3 + Element Plus 的现代化 GUI
+- 🔍 **自动识别** - 自动识别输入类型（IP/域名/URL/CIDR），无需手动分类
+- 🎯 **指纹识别** - 便于拓展的主动/被动指纹识别，支持复杂逻辑运算
+- 🛡️ **漏洞扫描** - Nuclei v3 支持，便于拓展的指纹漏洞映射数据库
+- 📊 **HTML 报表** - 高效的 HTML 报表，包含漏洞请求响应
+- 🔐 **安全审计** - 审计日志，敏感环境必备
+- 🌐 **子域名枚举** - 高效的子域名枚举/爆破，精准的泛解析过滤
+- 🔎 **资产测绘** - Hunter、Fofa、Quake 支持
 
-* 便于拓展的主动/被动指纹识别
+## 截图
 
-* 指纹支持复杂 与/或/非/括号 逻辑运算。人类友好。
+> 截图待添加
 
-* Nuclei v3支持
+## 安装
 
-* 便于拓展的指纹漏洞映射数据库，尽量避免无效发包
+### 从 Release 下载
 
-* 高效的子域名枚举/爆破，精准的泛解析过滤
+前往 [Releases](https://github.com/renbon-wu/dddd-gui/releases) 页面下载对应平台的版本：
 
-* Hunter、Fofa、Quake支持
+- `dddd-gui-windows-amd64.exe` - Windows 64位
+- `dddd-gui-linux-amd64` - Linux 64位
+- `dddd-gui-darwin-amd64` - macOS 64位
+- `config.zip` - 配置文件（首次使用需下载）
 
-* Hunter 低感知模式
+### 从源码构建
 
-* 低依赖，多系统开箱即用
+#### 环境要求
 
-* 高效的HTML报表，包含漏洞请求响应
+- Go 1.22+
+- Node.js 18+
+- Wails v2.12.0+
 
-* 审计日志，敏感环境必备
+#### 构建步骤
 
-  
+```bash
+# 克隆仓库
+git clone https://github.com/renbon-wu/dddd-gui.git
+cd dddd-gui
 
-# 快速开始
+# 安装前端依赖
+cd frontend && npm install && cd ..
 
-### 安装
+# 构建
+go build -o dddd-gui .
 
-Release中下载config.zip与您操作系统对应的二进制文件。直接命令行运行即可。
+# 或使用 Wails 构建
+wails build
+```
 
+## 使用
 
+### GUI 模式
 
-PS: dddd v2.0起，可以独立于config文件夹运行。
+直接运行程序即可启动 GUI 界面：
 
-### 最简使用
+```bash
+./dddd-gui
+```
 
-扫描IP
+### 功能模块
 
-`dddd -t 192.168.0.1`
+1. **扫描任务** - 创建和管理扫描任务
+2. **目标管理** - 导入和管理扫描目标
+3. **指纹管理** - 管理指纹识别规则
+4. **POC 管理** - 管理漏洞检测脚本
+5. **结果分析** - 查看和分析扫描结果
+6. **系统设置** - 配置 API 密钥和字典
 
-扫描网段
+## 配置
 
-`dddd -t 192.168.0.1/24`
+### API 配置
 
-`dddd -t 192.168.0.0-192.168.0.12`
+在 `config/api-config.yaml` 中配置以下 API 密钥：
 
-扫描网站
+- Hunter API Key
+- Fofa Email & API Key
+- Quake API Key
 
-`dddd -t http://test.com`
+### 字典配置
 
+支持自定义字典文件：
+- 子域名爆破字典
 
+## 开发
 
-### 输出文件
+### 技术栈
 
-dddd存在三种文件输出
+- **后端**: Go 1.22, Wails v2, Nuclei v3
+- **前端**: Vue 3, Element Plus, Vite 3
 
-1. txt格式输出（默认选择）
-2. html格式（默认选择）
-3. 审计日志（可选）
+### 项目结构
 
+```
+dddd-gui/
+├── main.go              # 入口文件
+├── internal/api/        # API 层
+├── common/              # 公共功能模块
+├── gopocs/              # Go POC 引擎
+├── lib/                 # 第三方库修改版
+├── frontend/            # Vue 3 前端
+├── structs/             # 数据结构定义
+├── utils/               # 工具函数
+└── config/              # 配置文件
+```
 
+## 更新历史
 
-所有结果默认输出在 `result.txt`，可通过`-o`参数更改输出文件，`-ot`参数更改输出格式(json)，默认为text。
+查看 [CHANGELOG.md](CHANGELOG.md) 了解更新历史。
 
-默认HTML格式漏洞输出为   `当前时间戳.html`，可通过`-ho`参数更改输出文件。
+## 贡献
 
+欢迎提交 Issue 和 Pull Request！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详情。
 
+## 安全
 
-**-a** 参数开启审计日志功能，日志保存在  `audit.log`，记录详细扫描行为。
+如果您发现安全漏洞，请查看 [SECURITY.md](SECURITY.md) 了解如何报告。
 
-**扫描可以随时终止**，当有指纹识别、漏扫结果等输出时，会实时保存在文件内。 
+## 致谢
 
+本项目基于以下开源项目开发：
 
+- [dddd](https://github.com/SleepingBag945/dddd) - 原始项目
+- [Wails](https://wails.io/) - GUI 框架
+- [Nuclei](https://github.com/projectdiscovery/nuclei) - 漏洞扫描引擎
+- [Vue.js](https://vuejs.org/) - 前端框架
+- [Element Plus](https://element-plus.org/) - UI 组件库
 
-### 应用场景命令速查
-
-红队外网 (Hunter)
-
-`dddd -t 'icp.name="xxxx有限公司"' -hunter -oip`
-
-红队外网 (Hunter查询备案,Fofa补充端口）高效梳理资产
-
-`dddd -t 'icp.name="xxxx有限公司"' -hunter -fofa -oip`
-
-红队外网 (本机枚举子域名)
-
-`dddd -t xxx.com -sd`
-
-红队内网
-
-`./dddd -t 172.16.100.0/24`
-
-安服测试/敏感环境 (开启审计日志~~，便于事后甩锅~~)
-
-`./dddd -t 172.16.100.1 -a`
-
-仅指纹识别
-
-`./dddd -t http://www.xxx.com -npoc`
-
-`./dddd -t 172.16.100.11 -npoc`
-
-`./dddd -t 172.16.120.11:3307 -npoc`
-
-
-
-### 更多信息
-
-若您想知道如何**添加指纹**，**添加Poc**，更多用法或漏洞报表截图。请点击下边的链接。
-
-[更多信息](details.md)
-
-
-
-# 更新历史
-
-[更新历史](Update.md)
-
-
-
-# 免责声明
+## 免责声明
 
 本工具仅面向**合法授权**的企业安全建设行为，如您需要测试本工具的可用性，请自行搭建靶机环境。
 
@@ -134,34 +144,9 @@ dddd存在三种文件输出
 
 如您在使用本工具的过程中存在任何非法行为，您需自行承担相应后果，我们将不承担任何法律及连带责任。
 
-在安装并使用本工具前，请您**务必审慎阅读、充分理解各条款内容**，限制、免责条款或者其他涉及您重大权益的条款可能会以加粗、加下划线等形式提示您重点注意。 除非您已充分阅读、完全理解并接受本协议所有条款，否则，请您不要安装并使用本工具。您的使用行为或者您以其他任何明示或者默示方式表示接受本协议的，即视为您已阅读并同意本协议的约束。
+## License
 
+MIT License
 
-
-# 参考链接
-
-https://github.com/shadow1ng/fscan
-
-https://github.com/lcvvvv/kscan
-
-https://github.com/lcvvvv/gonmap
-
-https://github.com/projectdiscovery/nuclei
-
-https://github.com/projectdiscovery/subfinder
-
-https://github.com/projectdiscovery/httpx
-
-https://github.com/projectdiscovery/naabu
-
-https://github.com/chainreactors/gogo
-
-https://github.com/zan8in/afrog
-
-
-
-## Star History Chart
-
-[![Star History Chart](https://api.star-history.com/svg?repos=SleepingBag945/dddd&type=Date)](https://star-history.com/#SleepingBag945/dddd&Date)
-
-<img align='right' src="https://profile-counter.glitch.me/neo-regeorg/count.svg" width="200">
+Copyright (c) 2023 SleepingBag945
+Copyright (c) 2024 renbon-wu
